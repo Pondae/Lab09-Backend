@@ -9,6 +9,8 @@ import se331.lab.rest.entity.Organizer;
 import se331.lab.rest.repository.EventRepository;
 import se331.lab.rest.repository.OrganizerRepository;
 
+import javax.transaction.Transactional;
+
 @Component
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
@@ -16,6 +18,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
     OrganizerRepository organizerRepository;
     @Override
+    @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         Organizer org1, org2, org3;
         org1 = organizerRepository.save(Organizer.builder()
