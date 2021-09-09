@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import se331.lab.rest.entity.Organizer;
 import se331.lab.rest.repository.OrganizerRepository;
 
+import java.util.Optional;
+
 @Repository
 public class OrganizerDaoImpl implements OrganizerDao {
     @Autowired
@@ -14,5 +16,10 @@ public class OrganizerDaoImpl implements OrganizerDao {
     @Override
     public Page<Organizer> getOrganizer(Pageable pageRequest) {
         return organizerRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public Optional<Organizer> findById(Long id) {
+        return organizerRepository.findById(id);
     }
 }
